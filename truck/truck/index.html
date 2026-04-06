@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' https://*.supabase.co https://*.openstreetmap.org https://cdn.jsdelivr.net https://unpkg.com;
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com;
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com;
+    img-src 'self' data: https://*.openstreetmap.org https://unpkg.com;
+    connect-src 'self' https://*.supabase.co https://*.openstreetmap.org https://cdn.jsdelivr.net https://unpkg.com;
+    worker-src 'self' blob:;
+">  
+<title>تطبيق تتبع السائقين</title>
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div id="login-screen" class="screen">
+        <div class="login-card">
+            <div class="logo">📍</div>
+            <h2>تسجيل دخول السائق</h2>
+            <input type="email" id="email" placeholder="البريد الإلكتروني">
+            <input type="password" id="password" placeholder="كلمة المرور">
+            <button id="login-btn">دخول للمزامنة</button>
+        </div>
+    </div>
+
+    <div id="map-screen" class="screen" style="display: none;">
+        <div class="header">
+            <span id="driver-display-name">جاري التحميل...</span>
+            <button id="logout-btn">خروج</button>
+        </div>
+        
+        <div id="map"></div>
+
+        <div class="controls">
+            <button id="send-location-btn">إرسال الإحداثيات الآن</button>
+            <p id="status-msg"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
